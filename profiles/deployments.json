@@ -1,0 +1,50 @@
+{
+  "global": {
+    "shared": [
+      "awesome-ppt",
+      "critical-analysis",
+      "data-insight-visual-analysis",
+      "frontend-design",
+      "grilling",
+      "huashu-excel",
+      "internal-comms",
+      "internet-failure-analysis-expert",
+      "ieee-author-alignment",
+      "karpathy-guidelines",
+      "mcp-builder",
+      "morandi-cinematic-poster-zeejay",
+      "ppt-master",
+      "prompt-optimizer",
+      "recording-knowledge-compiler",
+      "scene-distillation-zine-v1-3",
+      "scenes-gathered-zine-live-flow-v1-0",
+      "scenes-gathered-zine-v1-3",
+      "senior-business-analyst",
+      "video-evidence-extraction",
+      "writing-for-agents"
+    ],
+    "codexOnly": [
+      "canvas-design",
+      "doc-coauthoring",
+      "slack-gif-creator",
+      "theme-factory"
+    ],
+    "workbuddyOnly": [
+      "academic-paper",
+      "academic-paper-reviewer",
+      "academic-pipeline",
+      "deep-research"
+    ]
+  },
+  "scoped": {
+    "multi-perspective": {
+      "shared": [
+        "car-buying-framework",
+        "huashu-nuwa",
+        "mechanism-political-economy-framework"
+      ],
+      "codexOnly": [],
+      "workbuddyOnly": []
+    }
+  }
+}

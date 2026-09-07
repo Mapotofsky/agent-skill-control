@@ -1,0 +1,20 @@
+{
+  "name": "agent-skill-control",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Codex and WorkBuddy skill inventory and publishing control plane",
+  "scripts": {
+    "skills:list": "skills list",
+    "skills:find": "skills find",
+    "validate": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/publish-skills.ps1 -Mode Validate",
+    "publish:check": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/publish-skills.ps1 -Mode Check",
+    "publish:apply": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/publish-skills.ps1 -Mode Apply",
+    "publish:status": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/publish-skills.ps1 -Mode Status",
+    "thirdparty:check": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/update-third-party.ps1 -All",
+    "thirdparty:update": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/update-third-party.ps1 -All -Apply",
+    "test": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tests/run-tests.ps1"
+  },
+  "devDependencies": {
+    "skills": "1.5.23"
+  }
+}

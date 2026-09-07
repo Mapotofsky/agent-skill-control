@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频证据提取"
+  short_description: "从视频或音频生成时间对齐、可复查的转写和关键帧证据文件"
+  default_prompt: "使用 $video-evidence-extraction 从这个媒体生成可核查的音画证据，再按我的目标分析。"

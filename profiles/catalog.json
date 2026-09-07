@@ -1,0 +1,142 @@
+{
+  "self": {
+    "awesome-ppt": {
+      "status": "active"
+    },
+    "car-buying-framework": {
+      "status": "active"
+    },
+    "critical-analysis": {
+      "status": "active"
+    },
+    "data-insight-visual-analysis": {
+      "status": "active"
+    },
+    "ieee-author-alignment": {
+      "status": "active"
+    },
+    "mechanism-political-economy-framework": {
+      "status": "active"
+    },
+    "prompt-optimizer": {
+      "status": "active"
+    },
+    "recording-knowledge-compiler": {
+      "status": "active"
+    },
+    "video-evidence-extraction": {
+      "status": "active"
+    }
+  },
+  "thirdParty": {
+    "academic-paper": {
+      "status": "active",
+      "repository": "https://github.com/Imbad0202/academic-research-skills",
+      "subpath": "academic-paper"
+    },
+    "academic-paper-reviewer": {
+      "status": "active",
+      "repository": "https://github.com/Imbad0202/academic-research-skills",
+      "subpath": "academic-paper-reviewer"
+    },
+    "academic-pipeline": {
+      "status": "active",
+      "repository": "https://github.com/Imbad0202/academic-research-skills",
+      "subpath": "academic-pipeline"
+    },
+    "canvas-design": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/canvas-design"
+    },
+    "deep-research": {
+      "status": "active",
+      "repository": "https://github.com/Imbad0202/academic-research-skills",
+      "subpath": "deep-research"
+    },
+    "doc-coauthoring": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/doc-coauthoring"
+    },
+    "frontend-design": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/frontend-design"
+    },
+    "grilling": {
+      "status": "active",
+      "repository": "https://github.com/mattpocock/skills",
+      "subpath": "skills/productivity/grilling"
+    },
+    "huashu-excel": {
+      "status": "active",
+      "repository": "https://github.com/alchaincyf/huashu-excel"
+    },
+    "huashu-nuwa": {
+      "status": "active",
+      "repository": "https://github.com/alchaincyf/nuwa-skill"
+    },
+    "internal-comms": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/internal-comms"
+    },
+    "internet-failure-analysis-expert": {
+      "status": "active"
+    },
+    "karpathy-guidelines": {
+      "status": "active",
+      "repository": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "subpath": "skills/karpathy-guidelines"
+    },
+    "mcp-builder": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/mcp-builder"
+    },
+    "morandi-cinematic-poster-zeejay": {
+      "status": "active",
+      "repository": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "subpath": "skills/morandi-cinematic-poster-zeejay"
+    },
+    "ppt-master": {
+      "status": "active",
+      "repository": "https://github.com/hugohe3/ppt-master",
+      "subpath": "skills/ppt-master"
+    },
+    "scene-distillation-zine-v1-3": {
+      "status": "active",
+      "repository": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "subpath": "skills/scene-distillation-zine-v1-3"
+    },
+    "scenes-gathered-zine-live-flow-v1-0": {
+      "status": "active",
+      "repository": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "subpath": "skills/scenes-gathered-zine-live-flow-v1-0"
+    },
+    "scenes-gathered-zine-v1-3": {
+      "status": "active",
+      "repository": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "subpath": "skills/scenes-gathered-zine-v1-3"
+    },
+    "senior-business-analyst": {
+      "status": "active"
+    },
+    "slack-gif-creator": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/slack-gif-creator"
+    },
+    "theme-factory": {
+      "status": "active",
+      "repository": "https://github.com/anthropics/skills",
+      "subpath": "skills/theme-factory"
+    },
+    "writing-for-agents": {
+      "status": "active",
+      "repository": "https://github.com/mattpocock/skills",
+      "subpath": "skills/productivity/writing-for-agents"
+    }
+  }
+}

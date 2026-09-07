@@ -1,0 +1,4 @@
+interface:
+  display_name: "购车思路框架"
+  short_description: "用场景、安全、机制和证据筛选汽车"
+  default_prompt: "Use $car-buying-framework to evaluate whether a car fits my budget, usage scenario, and safety constraints."
