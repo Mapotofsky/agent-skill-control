@@ -1,5 +1,5 @@
 interface:
   display_name: "录音知识编译器"
   short_description: "将录音与配套材料编译为独立、详尽、可入库的知识文档"
-  default_prompt: "使用 $recording-knowledge-compiler 将这段录音及配套资料编译为可独立使用的知识讲义或指导手册。"
+  default_prompt: "使用 $recording-knowledge-compiler 将录音、转写及配套材料按用途编译为独立、详尽的知识点讲义、指导手册或会议文档。"
 

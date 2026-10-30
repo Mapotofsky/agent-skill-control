@@ -18,7 +18,7 @@ REQUIRED_FILES = (
     "04_待回听确认项.md",
     "05_内容覆盖表.md",
 )
-DEFAULT_FINALS = ("03_知识点讲义.md", "03_指导手册.md")
+DEFAULT_FINALS = ("03_知识点讲义.md", "03_指导手册.md", "03_会议文档.md")
 
 
 @dataclass
@@ -117,12 +117,27 @@ def line_matches(text: str, pattern: re.Pattern[str]) -> Iterable[tuple[int, str
             yield number, line.strip()
 
 
+def without_frontmatter(text: str) -> str:
+    """Keep project metadata outside body checks, preserving line numbers."""
+    lines = text.splitlines(keepends=True)
+    if lines and lines[0].strip() == "---":
+        for index in range(1, len(lines)):
+            if lines[index].strip() == "---":
+                return "\n" * (index + 1) + "".join(lines[index + 1:])
+    return text
+
+
 def validate_final(text: str, path: Path, report: Report) -> None:
+    text = without_frontmatter(text)
     validate_heading_structure(text, path, report)
     hard_patterns = {
         "SOURCE_TAG": re.compile(r"【(?:录音|课件[^】]*|图片[^】]*|完整课件[^】]*|术语纠正|外部扩展)】"),
         "EDITORIAL_LEAK": re.compile(r"待回听确认|建议核验|证据路径|来源文件|编辑说明|参见(?:书面稿|课件|图片)"),
         "DETACHED_SUPPLEMENT": re.compile(r"^#{1,6}\s+.*(?:课件|图片|录音|资料)补充", re.MULTILINE),
+        "INTERNAL_LINK": re.compile(
+            r"\[\[[^\n]+?\]\]|\[[^\]\n]*\]\((?!\s*<?(?:https?://|mailto:))[^)\n]+\)",
+            re.IGNORECASE,
+        ),
     }
     for code, pattern in hard_patterns.items():
         for number, snippet in line_matches(text, pattern):
@@ -182,7 +197,7 @@ def find_column(header: list[str], patterns: tuple[str, ...]) -> int | None:
     return None
 
 
-def validate_coverage(text: str, path: Path, report: Report) -> None:
+def validate_coverage(text: str, path: Path, report: Report, targets: dict[str, str]) -> None:
     validate_heading_structure(text, path, report)
     usable: list[tuple[int, list[str], list[list[str]], int, int, int]] = []
     for line, header, rows in tables(text):
@@ -199,6 +214,10 @@ def validate_coverage(text: str, path: Path, report: Report) -> None:
         return
     row_count = 0
     generic = re.compile(r"^(?:是|否|已覆盖|已补充|已纳入|见上|同上|见正文|完成|无)$")
+    headings = {
+        label: {title for _line, _level, title in markdown_headings(without_frontmatter(body))}
+        for label, body in targets.items()
+    }
     for line, _header, rows, source, written, final in usable:
         row_count += len(rows)
         for offset, row in enumerate(rows, start=2):
@@ -213,6 +232,18 @@ def validate_coverage(text: str, path: Path, report: Report) -> None:
                         path,
                         line + offset,
                     )
+                    continue
+                for destination in re.split(r"[；;]|<br\s*/?>", value):
+                    destination = destination.strip().strip("`")
+                    if re.match(r"^(?:04|不纳入)\s*[:：]\s*\S", destination):
+                        continue
+                    if label in headings and destination not in headings[label]:
+                        report.error(
+                            "COVERAGE_TARGET_MISSING",
+                            f"{label} 中不存在覆盖表所指标题“{destination}”。",
+                            path,
+                            line + offset,
+                        )
     if row_count == 0:
         report.error("COVERAGE_EMPTY", "覆盖表没有数据行。", path)
     report.metrics["coverage_rows"] = row_count
@@ -271,9 +302,9 @@ def resolve_final(package_dir: Path, value: str | None, report: Report) -> Path 
     if len(candidates) == 1:
         return candidates[0]
     if len(candidates) > 1:
-        report.error("FINAL_AMBIGUOUS", "同时发现两种默认最终稿；请用 --final 明确指定。", package_dir)
+        report.error("FINAL_AMBIGUOUS", "同时发现多种默认最终稿；请用 --final 明确指定。", package_dir)
     else:
-        report.error("FINAL_MISSING", "未找到 03_知识点讲义.md 或 03_指导手册.md。", package_dir)
+        report.error("FINAL_MISSING", f"未找到默认最终稿：{'、'.join(DEFAULT_FINALS)}。", package_dir)
     return None
 
 
@@ -307,7 +338,12 @@ def validate(args: argparse.Namespace) -> Report:
 
     coverage = texts.get("05_内容覆盖表.md")
     if coverage is not None:
-        validate_coverage(coverage, package_dir / "05_内容覆盖表.md", report)
+        targets = {}
+        if "02_完整书面稿.md" in texts:
+            targets["02"] = texts["02_完整书面稿.md"]
+        if final_text is not None:
+            targets["03"] = final_text
+        validate_coverage(coverage, package_dir / "05_内容覆盖表.md", report, targets)
 
     uncertainties = texts.get("04_待回听确认项.md")
     if uncertainties is not None:

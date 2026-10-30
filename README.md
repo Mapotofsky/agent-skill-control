@@ -21,7 +21,7 @@ skills/
 | [`ieee-author-alignment`](skills/self/ieee-author-alignment/) | 诊断并修复 IEEE conference LaTeX 模板中的作者块对齐问题。 |
 | [`mechanism-political-economy-framework`](skills/self/mechanism-political-economy-framework/) | 使用机制传导链分析宏观叙事、政策、产业与分配问题。 |
 | [`prompt-optimizer`](skills/self/prompt-optimizer/) | 生成、重写、迁移和评审可复用提示词。 |
-| [`recording-knowledge-compiler`](skills/self/recording-knowledge-compiler/) | 将录音、视频、课件和辅助材料无损编译为知识库讲义或指导手册。 |
+| [`recording-knowledge-compiler`](skills/self/recording-knowledge-compiler/) | 将录音、视频、转写及配套材料无损编译为知识点讲义、指导手册或会议文档。 |
 | [`video-evidence-extraction`](skills/self/video-evidence-extraction/) | 从本地音视频提取可核查的转写、关键帧和时间对齐证据。 |
 
 `skills/third-party` 保存经过审查的上游快照。每个 Skill 的 repository 和可选 subpath 记录在 [`profiles/catalog.json`](profiles/catalog.json)；没有可核实 repository 的条目由更新器标记为 `manual-only`，不会猜测或自动更新。
